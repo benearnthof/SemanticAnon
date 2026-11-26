@@ -1,0 +1,59 @@
+[project]
+name = "semanticanon"
+version = "0.1.0"
+description = "Podcast ingestion, transcription, diarization, and semantic search environment"
+requires-python = ">=3.11,<3.12"
+
+dependencies = [
+    "requests>=2.32",
+    "yt-dlp[default,curl-cffi]>=2025.1",
+    "gdown>=5.2",
+    "numpy>=1.26",
+    "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+
+# Speech transcription
+transcription = [
+    "faster-whisper>=1.1",
+    "torch",
+    "nvidia-cublas-cu12>=12.4",
+    "nvidia-cudnn-cu12>=9,<10",
+    "nvidia-cuda-runtime-cu12>=12.4",
+]
+
+# Speaker diarization
+diarization = [
+    "whisperx>=3.3",
+    "torch",
+]
+
+# Semantic search and embedding generation
+semantic = [
+    "sentence-transformers>=4.1",
+    "transformers>=4.51",
+    "onnxruntime>=1.20",
+    "spacy>=3.8",
+    "schema",
+    "torch",
+]
+
+# Data analysis, clustering, and machine learning experiments
+analysis = [
+    "hdbscan",
+    "joblib",
+    "pandas",
+    "plotly",
+    "scipy",
+    "scikit-learn",
+    "umap-learn",
+]
+
+# Streamlit-based speaker labeling interfaces
+labeling = [
+    "streamlit",
+]
+
+[tool.uv]
+package = false

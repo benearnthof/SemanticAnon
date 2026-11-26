@@ -7,7 +7,7 @@ set -Eeuo pipefail
 # Optional end-to-end transcription test:
 #   TEST_AUDIO=/workspace/data/audio/example.mp3 bash setup.sh
 
-WORKDIR="${WORKDIR:-/workspace}"
+WORKDIR="${WORKDIR:-/workspace/SemanticAnon}"
 PYTHON_VERSION="${PYTHON_VERSION:-3.11}"
 VENV="${WORKDIR}/.venv"
 

@@ -38,4 +38,12 @@ uv sync --reinstall-package onnxruntime --all-extras
 
 ## Running a search query
 python -m semanticsearch.hybrid.search "Coindexter" -n 5 --episodes --context 2 --support-limit 3
+Keep in mind that cold start takes a couple of seconds, after this inference performance for this query yields:  
+query: 'Coindexter'
+results: 5  (138.5 ms total; 7.6 ms lexical; 130.7 ms semantic)
+candidates: 41 lexical / 100 semantic
 
+## REPL
+Because we're currently using a network drive the actual startup time for semantic search is a bit long. Every time we load the model from disk we have to ship 2.3GB through the network into RAM. This will be solved once we deploy since we will save the onnx data to NVME and keep the model loaded in RAM for repeated queries. 
+We have yet to implement the actual API for search on demand, but we can get a feeling for actual performance via 
+python -m semanticsearch.repl --threads 16

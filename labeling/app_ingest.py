@@ -14,7 +14,9 @@ import streamlit as st
 # ---------------------------------------------------------------------------
 # TODO: unify root paths such that every file is consistent. 
 # Data should be located in /workspace/data 
-ROOT = Path(__file__).resolve().parent
+# expected /workspace/SemanticAnon/labeling/data/audio
+# expected /workspace/SemanticAnon/labeling/data/diarized
+ROOT = Path("/workspace/")
 AUDIO_DIR = ROOT / "data" / "audio"
 DIARIZED_DIR = ROOT / "data" / "diarized"
 OUTPUT_DIR = ROOT / "data" / "diarized_annotated"

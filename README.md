@@ -16,11 +16,13 @@ python ./scripts/episode_ingest.py --batch-size 1
 This downloads, transcribes, & diarizes new episodes.
 
 ## Annotating New Episodes
-To update indices we need fully labeled data. Resolving speaker identities is done via the app in ./labeling/app.py. 
+To update indices we need fully labeled data. Resolving speaker identities is done via the app in ./labeling/app_ingest.py. 
 We can also train predictive models to help us with labeling.  
 python scripts/diarization_models/train_classifier.py
 python scripts/diarization_models/predict_speakers.py
 (TODO: add absolute paths to these such that the scripts work out of the box).
 After prelabeling we assign labels via the streamlit interface. We can then proceed with updating the lexical search database & embeddings needed for hybrid search.
+streamlit run ./labeling/app_ingest.py
 
 ## Updating Lexical & Semantic Search Indices
+python ./seman

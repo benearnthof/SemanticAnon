@@ -26,15 +26,15 @@ import time
 from pathlib import Path
 from typing import Any
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
-PASSAGES_BUILDER = PROJECT_ROOT / "semanticsearch" / "build_passages.py"
-LEXICAL_BUILDER = PROJECT_ROOT / "semanticsearch" / "lexical" / "build_index.py"
+PROJECT_ROOT = Path("/workspace/")
+PASSAGES_BUILDER = PROJECT_ROOT / "SemanticAnon" / "semanticsearch" / "build_passages.py"
+LEXICAL_BUILDER = PROJECT_ROOT / "SemanticAnon" / "semanticsearch" / "lexical" / "build_index.py"
 
-DEFAULT_INDEX = PROJECT_ROOT / "semanticsearch" / "index"
+DEFAULT_INDEX = PROJECT_ROOT / "SemanticAnon" / "semanticsearch" / "index"
 DEFAULT_EMBEDDINGS = (
-    PROJECT_ROOT / "semanticsearch" / "embeddings" / "qwen3-embedding-0.6b"
+    PROJECT_ROOT / "SemanticAnon" /  "semanticsearch" / "embeddings" / "qwen3-embedding-0.6b"
 )
-DEFAULT_LEXICAL_DB = PROJECT_ROOT / "semanticsearch" / "lexical" / "lexical.db"
+DEFAULT_LEXICAL_DB = PROJECT_ROOT / "SemanticAnon" / "semanticsearch" / "lexical" / "lexical.db"
 MANIFEST_NAME = "embedding_manifest.json"
 DEFAULT_MODEL = "Qwen/Qwen3-Embedding-0.6B"
 DEFAULT_QUERY_INSTRUCTION = (

@@ -25,4 +25,17 @@ After prelabeling we assign labels via the streamlit interface. We can then proc
 streamlit run ./labeling/app_ingest.py
 
 ## Updating Lexical & Semantic Search Indices
-python ./seman
+python ./semanticsearch/update_index.py
+
+## Export Embedding Model to ONNX for Fast Inference
+python ./semanticsearch/export_onnx.py
+make sure to add the correct onnx runtime
+uv add sentence-transformers[onnx-gpu]
+or 
+uv add sentence-transformers[onnx] for later CPU inference.
+run this in case of version mismatch
+uv sync --reinstall-package onnxruntime --all-extras
+
+## Running a search query
+python -m semanticsearch.hybrid.search "Coindexter" -n 5 --episodes --context 2 --support-limit 3
+

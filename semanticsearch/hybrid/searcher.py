@@ -76,6 +76,8 @@ class HybridSearcher:
         episodes: bool = False,
         support_weight: float = 0.25,
         support_limit: int = 5,
+        lexical_weight: float | None = None,
+        semantic_weight: float | None = None,
     ) -> HybridSearchResult:
         """
         Run lexical and semantic retrieval, then fuse their rankings.
@@ -109,14 +111,29 @@ class HybridSearcher:
         semantic_hits = semantic_result.hits
 
         # 3. Reciprocal Rank Fusion.
-        # Fuse the complete candidate lists.
-        # Do not truncate before optional episode aggregation.
+        # Per-query weights override the defaults without mutating shared config.
+        # This allows concurrent callers to choose different balances safely.
+        effective_lexical_weight = (
+            self.config.lexical_weight
+            if lexical_weight is None
+            else lexical_weight
+        )
+        effective_semantic_weight = (
+            self.config.semantic_weight
+            if semantic_weight is None
+            else semantic_weight
+        )
+        if effective_lexical_weight < 0 or effective_semantic_weight < 0:
+            raise ValueError("retrieval weights cannot be negative")
+        if effective_lexical_weight + effective_semantic_weight <= 0:
+            raise ValueError("at least one retrieval weight must be positive")
+
         fused = reciprocal_rank_fusion(
             lexical_hits,
             semantic_hits,
             k=self.config.rrf_k,
-            lexical_weight=self.config.lexical_weight,
-            semantic_weight=self.config.semantic_weight,
+            lexical_weight=effective_lexical_weight,
+            semantic_weight=effective_semantic_weight,
         )
 
         episode_hits = []

@@ -1,3 +1,6 @@
+/* Gumshoe Search: case file on a corkboard.
+   Typed paper pinned to a dark board, one continuous red thread running down the page. */
+ 
 :root {
   color-scheme: dark light;
   --board: #2b221b;
@@ -12,7 +15,7 @@
   --on-board: #e8dfc8;
   --on-board-dim: #b9ad92;
   --type: "Courier Prime", "American Typewriter", "Courier New", Courier, monospace;
-  --pen: "Bradley Hand", "Segoe Print", "Noteworthy", "Comic Sans MS", cursive;
+  --pen: "Permanent Marker", "Bradley Hand", "Segoe Print", "Noteworthy", "Comic Sans MS", cursive;
   --pin-x: 36px; /* centre of the pins and the thread */
   font-family: var(--type);
 }
@@ -139,7 +142,7 @@ input[type="range"] { display: block; width: 100%; margin: 12px 0 4px; accent-co
 .range-labels { display: flex; justify-content: space-between; color: var(--faded); font-size: .74rem; }
 .limit-control input { width: 100%; height: 36px; margin-top: 6px; padding: 0 8px; }
 .field-hint { display: block; margin-top: 4px; color: var(--faded); font-size: .72rem; }
-.submit-hint { display: inline-block; margin: 16px 0 0; color: #a3161b; font-family: var(--pen); font-size: 1rem; transform: rotate(-1deg); }
+.submit-hint { display: inline-block; margin: 16px 0 0; color: #a3161b; font-family: var(--pen); font-size: .88rem; transform: rotate(-1deg); }
  
 /* Results, lying on the board */
 .results-section { margin-top: 44px; min-height: 90px; }
@@ -204,8 +207,12 @@ input[type="range"] { display: block; width: 100%; margin: 12px 0 4px; accent-co
   .additional summary { padding-left: 16px; padding-right: 16px; }
   .empty-additional { padding-left: 16px; padding-right: 16px; }
 }
-
-/* Paper clips for search form, and every 3rd card starting at the 2nd */
+ 
+/* ==========================================================
+   Extras: paper clips and sticky notes
+   ========================================================== */
+ 
+/* Paper clips: search form, and every 3rd card starting at the 2nd */
 .search-panel::after,
 .episode-card:nth-child(3n+2)::after {
   content: "";
@@ -222,7 +229,7 @@ input[type="range"] { display: block; width: 100%; margin: 12px 0 4px; accent-co
 }
 .search-panel::after { transform: rotate(-9deg); right: 70px; }
  
-/* Sticky notes for additional passages */
+/* Sticky notes: the additional passages */
 .additional[open] { padding: 2px 22px 22px; }
 .additional[open] summary { padding-left: 0; padding-right: 0; }
 .additional .additional-passage {
@@ -238,7 +245,7 @@ input[type="range"] { display: block; width: 100%; margin: 12px 0 4px; accent-co
 .additional[open] .additional-passage,
 .additional[open] .additional-passage:first-of-type { padding-top: 24px; }
 .additional .additional-passage:nth-of-type(even) { margin-left: auto; transform: rotate(1.3deg); }
-.additional .passage-label { color: #7a1216; font-family: var(--pen); font-size: .98rem; }
+.additional .passage-label { color: #7a1216; font-family: var(--pen); font-size: .88rem; }
 .additional .passage-time { color: var(--thread-dark); }
  
 @media (max-width: 600px) {

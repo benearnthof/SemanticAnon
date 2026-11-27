@@ -13,6 +13,9 @@ dependencies = [
     "hf-transfer>=0.1.9",
     "sentence-transformers[onnx]>=5.7.0",
     "onnxruntime>=1.32.0",
+    "fastapi>=0.165.0",
+    "uvicorn[standard]>=0.54.0",
+    "pydantic>=2.6",
 ]
 
 [project.optional-dependencies]

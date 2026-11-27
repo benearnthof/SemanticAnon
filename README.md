@@ -94,7 +94,11 @@ candidates: 41 lexical / 100 semantic
 ## REPL
 Because we're currently using a network drive the actual startup time for semantic search is a bit long. Every time we load the model from disk we have to send 2.3GB through the network into RAM. This will be solved once we deploy since we will save the onnx data to NVME and keep the model loaded in RAM for repeated queries. 
 We have yet to implement the actual API for search on demand, but we can get a feeling for actual performance with the minimal repl interface:  
-```
+```bash
 python -m semanticsearch.repl --threads 16
 ```
 
+## Search API
+```bash
+uv run uvicorn semanticsearch.api.main:app --host 127.0.0.1 --port 8000 --workers 1
+```

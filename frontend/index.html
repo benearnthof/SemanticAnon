@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f4f0">
+  <meta name="description" content="Search podcast transcripts across episodes.">
+  <title>Podcast Transcript Search</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <main class="page-shell">
+    <header class="site-header">
+      <div class="eyebrow">TRANSCRIPT EXPLORER</div>
+      <h1>Podcast search</h1>
+      <p class="intro">Find conversations across the archive. Search results are grouped by episode, with the strongest matching passage shown first.</p>
+    </header>
+
+    <section class="search-panel" aria-labelledby="search-heading">
+      <h2 id="search-heading" class="visually-hidden">Search transcripts</h2>
+      <form id="search-form">
+        <label class="field-label" for="query">What are you looking for?</label>
+        <div class="query-row">
+          <input id="query" name="query" type="search" maxlength="2000" placeholder="Enter a name, topic, phrase, or question…" autocomplete="off" required>
+          <button id="search-button" type="submit">Search <span aria-hidden="true">↗</span></button>
+        </div>
+
+        <div class="controls-row">
+          <div class="weight-control">
+            <div class="control-heading">
+              <label class="field-label" for="lexical-weight">Search balance</label>
+              <output id="weight-value" for="lexical-weight">50% lexical · 50% semantic</output>
+            </div>
+            <input id="lexical-weight" type="range" min="0" max="1" step="0.05" value="0.5">
+            <div class="range-labels"><span>Semantic</span><span>Lexical</span></div>
+          </div>
+          <div class="limit-control">
+            <label class="field-label" for="result-limit">Episodes</label>
+            <input id="result-limit" type="number" min="1" max="25" step="1" value="10" inputmode="numeric">
+            <span class="field-hint">1–25 results</span>
+          </div>
+        </div>
+      </form>
+      <p class="submit-hint">Search runs only when you press Search or hit Enter.</p>
+    </section>
+
+    <section id="results-section" class="results-section" aria-live="polite" aria-busy="false">
+      <div id="results-heading" class="results-heading" hidden>
+        <div>
+          <div class="eyebrow">SEARCH RESULTS</div>
+          <h2 id="results-title">Results</h2>
+        </div>
+        <p id="results-meta" class="results-meta"></p>
+      </div>
+      <div id="status" class="status" role="status">Enter a query to search the transcript archive.</div>
+      <div id="results-list" class="results-list"></div>
+    </section>
+
+    <footer class="site-footer">Podcast Transcript Search <span>·</span> Local archive</footer>
+  </main>
+</body>
+</html>

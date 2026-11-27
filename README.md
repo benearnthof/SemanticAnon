@@ -102,3 +102,11 @@ python -m semanticsearch.repl --threads 16
 ```bash
 uv run uvicorn semanticsearch.api.main:app --host 127.0.0.1 --port 8000 --workers 1
 ```
+
+
+```bash
+uv run uvicorn semanticsearch.api.main:app \
+  --host 127.0.0.1 \
+  --port 8000 \
+  --workers 1
+```

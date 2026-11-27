@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f5f4f0">
-  <meta name="description" content="Search podcast transcripts across episodes.">
+  <meta name="description" content="Semantic search for transcripts of TrueAnon episodes.">
+  <link rel="icon" type="image/svg+xml" href="/static/favicon.svg">
   <title>Podcast Transcript Search</title>
   <link rel="stylesheet" href="/static/styles.css">
   <script src="/static/app.js" defer></script>
@@ -12,15 +13,15 @@
 <body>
   <main class="page-shell">
     <header class="site-header">
-      <div class="eyebrow">TRANSCRIPT EXPLORER</div>
-      <h1>Podcast search</h1>
-      <p class="intro">Find conversations across the archive. Search results are grouped by episode, with the strongest matching passage shown first.</p>
+      <div class="eyebrow">Gumshoe Search</div>
+      <h1>Gumshoe Search</h1>
+      <p class="intro">Find TrueAnon episodes by keyword (lexical search) and relevance (semantic search). Search results are grouped by episode, with the strongest matching passage shown first.</p>
     </header>
 
     <section class="search-panel" aria-labelledby="search-heading">
       <h2 id="search-heading" class="visually-hidden">Search transcripts</h2>
       <form id="search-form">
-        <label class="field-label" for="query">What are you looking for?</label>
+        <label class="field-label" for="query">Enter your query.</label>
         <div class="query-row">
           <input id="query" name="query" type="search" maxlength="2000" placeholder="Enter a name, topic, phrase, or question…" autocomplete="off" required>
           <button id="search-button" type="submit">Search <span aria-hidden="true">↗</span></button>
@@ -42,7 +43,7 @@
           </div>
         </div>
       </form>
-      <p class="submit-hint">Search runs only when you press Search or hit Enter.</p>
+      <p class="submit-hint">Press Search or hit Enter to begin search.</p>
     </section>
 
     <section id="results-section" class="results-section" aria-live="polite" aria-busy="false">
@@ -53,11 +54,11 @@
         </div>
         <p id="results-meta" class="results-meta"></p>
       </div>
-      <div id="status" class="status" role="status">Enter a query to search the transcript archive.</div>
+      <div id="status" class="status" role="status">Enter a query.</div>
       <div id="results-list" class="results-list"></div>
     </section>
 
-    <footer class="site-footer">Podcast Transcript Search <span>·</span> Local archive</footer>
+    <footer class="site-footer">Gumshoe Search <span>·</span> Local archive</footer>
   </main>
 </body>
 </html>

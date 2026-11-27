@@ -1,6 +1,3 @@
-/* Gumshoe Search: case file on a corkboard.
-   Typed paper pinned to a dark board, one continuous red thread running down the page. */
- 
 :root {
   color-scheme: dark light;
   --board: #2b221b;
@@ -206,5 +203,47 @@ input[type="range"] { display: block; width: 100%; margin: 12px 0 4px; accent-co
   .additional-passage { padding-left: 16px; padding-right: 16px; }
   .additional summary { padding-left: 16px; padding-right: 16px; }
   .empty-additional { padding-left: 16px; padding-right: 16px; }
+}
+
+/* Paper clips for search form, and every 3rd card starting at the 2nd */
+.search-panel::after,
+.episode-card:nth-child(3n+2)::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  top: -20px;
+  right: 46px;
+  width: 18px;
+  height: 50px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 50'%3E%3Cpath d='M6 36V10A5 5 0 0 1 16 10V40A7 7 0 0 1 2 40V14' fill='none' stroke='%23a3a9b0' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  filter: drop-shadow(1px 2px 1px rgba(0, 0, 0, .45));
+  transform: rotate(7deg);
+  pointer-events: none;
+}
+.search-panel::after { transform: rotate(-9deg); right: 70px; }
+ 
+/* Sticky notes for additional passages */
+.additional[open] { padding: 2px 22px 22px; }
+.additional[open] summary { padding-left: 0; padding-right: 0; }
+.additional .additional-passage {
+  position: relative;
+  max-width: 94%;
+  margin: 14px 0 0;
+  padding: 24px 18px 14px;
+  border: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, .07) 0 12px, transparent 12px), #f1df72;
+  box-shadow: 0 10px 8px -8px rgba(0, 0, 0, .5), 2px 3px 6px rgba(0, 0, 0, .28);
+  transform: rotate(-1.1deg);
+}
+.additional[open] .additional-passage,
+.additional[open] .additional-passage:first-of-type { padding-top: 24px; }
+.additional .additional-passage:nth-of-type(even) { margin-left: auto; transform: rotate(1.3deg); }
+.additional .passage-label { color: #7a1216; font-family: var(--pen); font-size: .98rem; }
+.additional .passage-time { color: var(--thread-dark); }
+ 
+@media (max-width: 600px) {
+  .additional[open] { padding: 2px 16px 20px; }
+  .additional .additional-passage { max-width: 100%; }
+  .search-panel::after, .episode-card:nth-child(3n+2)::after { right: 30px; }
 }
  
